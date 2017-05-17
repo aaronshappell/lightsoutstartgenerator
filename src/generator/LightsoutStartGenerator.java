@@ -103,14 +103,18 @@ public class LightsoutStartGenerator {
         return toggledNum;
     }
 
-    public void createCSV(int iterations){
+    public void createData(int iterations){
         int[][] gen;
-        for(int i = 0; i < iterations; i++){
+        while(solvableStarts.size() + unsolvableStarts.size() < iterations){
             gen = generateStart();
             if(isSolvable(gen)){
-                solvableStarts.add(gen);
+                if(solvableStarts.size() < iterations / 2){
+                    solvableStarts.add(gen);
+                }
             } else{
-                unsolvableStarts.add(gen);
+                if(unsolvableStarts.size() < iterations / 2){
+                    unsolvableStarts.add(gen);
+                }
             }
         }
         //write to file
@@ -157,6 +161,6 @@ public class LightsoutStartGenerator {
 
     public static void main(String[] args) {
         LightsoutStartGenerator generator = new LightsoutStartGenerator();
-        generator.createCSV(10000);
+        generator.createData(100);
     }
 }
