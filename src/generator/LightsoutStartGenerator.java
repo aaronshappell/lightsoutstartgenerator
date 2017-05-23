@@ -110,14 +110,19 @@ public class LightsoutStartGenerator {
             if(isSolvable(gen)){
                 if(solvableStarts.size() < iterations / 2){
                     solvableStarts.add(gen);
+                    System.out.println(solvableStarts.size() + unsolvableStarts.size() + "/" + iterations + " generated");
                 }
             } else{
                 if(unsolvableStarts.size() < iterations / 2){
                     unsolvableStarts.add(gen);
+                    System.out.println(solvableStarts.size() + unsolvableStarts.size() + "/" + iterations  + " generated");
                 }
             }
         }
+        System.out.println("Generation finished!\n");
+
         //write to file
+        int startsWritten = 0;
         for(int i = 0; i < unsolvableStarts.size(); i++){
             for(int j = 0; j < 5; j++){
                 for(int k = 0; k < 5; k++){
@@ -133,6 +138,8 @@ public class LightsoutStartGenerator {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            startsWritten++;
+            System.out.println(startsWritten + "/" + iterations  + " written");
         }
         for(int i = 0; i < solvableStarts.size(); i++){
             for(int j = 0; j < 5; j++){
@@ -149,7 +156,10 @@ public class LightsoutStartGenerator {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            startsWritten++;
+            System.out.println(startsWritten + "/" + iterations  + " written");
         }
+        System.out.println("Writing to file done!");
 
         try {
             writer.flush();
