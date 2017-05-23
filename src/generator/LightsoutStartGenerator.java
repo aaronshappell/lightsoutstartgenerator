@@ -7,6 +7,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
+/**
+ * @author Aaron Shappell
+ */
+
 public class LightsoutStartGenerator {
     private ArrayList<int[][]> solvableStarts = new ArrayList<>();
     private ArrayList<int[][]> unsolvableStarts = new ArrayList<>();
@@ -32,10 +36,6 @@ public class LightsoutStartGenerator {
         }
         try {
             data.createNewFile();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        try {
             writer = new FileWriter(data);
         } catch (IOException e) {
             e.printStackTrace();
@@ -161,6 +161,6 @@ public class LightsoutStartGenerator {
 
     public static void main(String[] args) {
         LightsoutStartGenerator generator = new LightsoutStartGenerator();
-        generator.createData(100);
+        generator.createData(100000);
     }
 }
