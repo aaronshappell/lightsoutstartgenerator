@@ -30,7 +30,7 @@ public class LightsoutStartGenerator {
     private FileWriter writer;
 
     public LightsoutStartGenerator(){
-        data = new File("data.txt");
+        data = new File("data.csv");
         if(data.exists()){
             data.delete();
         }
